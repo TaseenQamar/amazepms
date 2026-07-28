@@ -1,26 +1,171 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Logo-matched brand palette */
+  --background: #f6f4fb;
+  --foreground: #1a1a5c;
+
+  --color-ink: #1a1a5c;
+  --color-ink-soft: #2c2c72;
+  --color-mist: #fbf9fe;
+  --color-sky: #efeaf8;
+  --color-cyan: #e89172;
+  --color-cyan-deep: #d97858;
+  --color-blue: #1a1a5c;
+  --color-violet: #8f8fc4;
+  --color-pink: #e89172;
+  --color-lime: #8fd14f;
+  --color-amber: #f5a020;
+  --color-navy: #12124a;
+  --color-muted: #6b6b8f;
+  --color-lavender: #9b9bcb;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-mist: var(--color-mist);
+  --color-sky: var(--color-sky);
+  --color-cyan: var(--color-cyan);
+  --color-cyan-deep: var(--color-cyan-deep);
+  --color-blue: var(--color-blue);
+  --color-violet: var(--color-violet);
+  --color-pink: var(--color-pink);
+  --color-lime: var(--color-lime);
+  --color-amber: var(--color-amber);
+  --color-navy: var(--color-navy);
+  --color-muted: var(--color-muted);
+  --color-lavender: var(--color-lavender);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --animate-blob: blob 18s ease-in-out infinite;
+  --animate-blob-slow: blob 26s ease-in-out infinite;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 9s ease-in-out infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--background);
+  scroll-behavior: auto;
+  overflow-x: hidden;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  overflow-x: clip;
+  min-height: 100%;
+  /* Prevent browser scroll-anchoring from fighting replay animations */
+  overflow-anchor: none;
+}
+
+/* Lenis — avoid double-smoothing / stuck wheel */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+::selection {
+  background: var(--color-cyan);
+  color: white;
+}
+
+.text-gradient {
+  background: linear-gradient(92deg, #1a1a5c 0%, #6b6bb0 40%, #e89172 75%, #f5a020 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.page-gradient {
+  background:
+    radial-gradient(ellipse 80% 55% at 75% 15%, rgba(155, 155, 203, 0.28) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 45% at 10% 75%, rgba(232, 145, 114, 0.16) 0%, transparent 50%),
+    linear-gradient(180deg, #fbf9fe 0%, #f3f0f9 45%, #f7f5fb 100%);
+}
+
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@keyframes blob {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(4%, -6%) scale(1.08);
+  }
+  50% {
+    transform: translate(-3%, 4%) scale(0.95);
+  }
+  75% {
+    transform: translate(-6%, -3%) scale(1.05);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 8px 32px -12px rgba(26, 26, 92, 0.12);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 40px -14px rgba(26, 26, 92, 0.14);
+}
+
+.section-pad {
+  padding-block: clamp(4.5rem, 8vw, 7.5rem);
+}
+
+.soft-card {
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 12px 40px -18px rgba(26, 26, 92, 0.16);
 }
