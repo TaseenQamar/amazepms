@@ -81,7 +81,7 @@ export const popIn = {
     opacity: 1,
     scale: 1,
     y: 0,
-    transition: { type: "spring", stiffness: 150, damping: 15 },
+    transition: { type: "spring" as const, stiffness: 150, damping: 15 },
   },
 };
 export const tiltIn = {
