@@ -45,18 +45,6 @@ export default function About() {
           >
             About Us
           </motion.p>
-          {/* <motion.h2
-            initial={{ opacity: 0, y: -40, scale: 0.9 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={scrollViewport}
-            transition={{ type: "spring", stiffness: 170, damping: 15 }}
-            className="mt-3 text-balance text-3xl font-bold tracking-tight text-ink sm:text-4xl md:text-5xl"
-          >
-            Integrated facility management{" "}
-            <span className="text-gradient">
-              built for India&apos;s campuses.
-            </span>
-          </motion.h2> */}
 
           <motion.p
             initial={{ opacity: 0, y: 28 }}

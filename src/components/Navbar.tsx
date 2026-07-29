@@ -289,13 +289,13 @@ export default function Navbar() {
               <Phone className="h-3.5 w-3.5 shrink-0 text-cyan transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12 group-hover:text-[#e89172]" />
               99085 38137
             </a>
-            <Link
-              href="/contact"
-              className="group inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-gradient-to-r from-white to-[#f8ebe5] px-4 py-2 text-[13px] font-bold text-[#1a1a5c] shadow-[0_8px_24px_-8px_rgba(232,145,114,0.35)] transition-all duration-300 hover:scale-[1.05] hover:shadow-[0_12px_28px_-8px_rgba(26,26,92,0.3)]"
+            <button
+              type="button"
+              className="group inline-flex cursor-default items-center gap-1.5 whitespace-nowrap rounded-full bg-gradient-to-r from-white to-[#f8ebe5] px-4 py-2 text-[13px] font-bold text-[#1a1a5c] shadow-[0_8px_24px_-8px_rgba(232,145,114,0.35)] transition-all duration-300 hover:scale-[1.05] hover:shadow-[0_12px_28px_-8px_rgba(26,26,92,0.3)]"
             >
               Get a Quote
               <ArrowUpRight className="h-3.5 w-3.5 text-[#e89172] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
+            </button>
           </motion.div>
 
           {/* Mobile toggle */}
@@ -359,13 +359,12 @@ export default function Navbar() {
                 <Phone className="h-4 w-4 text-cyan" />
                 99085 38137
               </a>
-              <Link
-                href="/contact"
-                onClick={() => setOpen(false)}
-                className="mt-1 rounded-full bg-cyan px-4 py-3 text-center text-sm font-bold text-white"
+              <button
+                type="button"
+                className="mt-1 cursor-default rounded-full bg-cyan px-4 py-3 text-center text-sm font-bold text-white"
               >
                 Get a Quote
-              </Link>
+              </button>
             </div>
           </motion.div>
         )}

@@ -1,15 +1,3 @@
-export const NAV_LINKS = [
-  { label: "Home", href: "/" },
-  { label: "About Us", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Recruitments", href: "/recruitments" },
-  { label: "Our Strength", href: "/strength" },
-  { label: "Our Clients", href: "/clients" },
-  { label: "Gallery", href: "/gallery" },
-  { label: "Careers", href: "/careers" },
-  { label: "Contact Us", href: "/contact" },
-];
-
 export const ABOUT_MISSION =
   "Our Mission is to be a leading provider of comprehensive property management solutions across PAN INDIA. We are committed to delivering exceptional services that exceed our clients' expectations, while prioritizing technology, sustainability, and the well-being of our employees.";
 
@@ -73,60 +61,6 @@ export const HERO_SLIDES = [
   },
 ];
 
-export const CLIENTS = [
-  "L&T Technology Services",
-  "Hill County",
-  "Sri Sairam Towers",
-  "Lodha",
-  "Oliva Clinic",
-  "Action Group",
-];
-
-export const SERVICES = [
-  {
-    title: "Security Services",
-    description:
-      "Uniformed, trained security personnel with SOPs, audits and 24×7 site readiness.",
-    image:
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    title: "Housekeeping",
-    description:
-      "Deep cleaning, soft services and hygiene programs built for commercial scale.",
-    image:
-      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    title: "MEP & Technical",
-    description:
-      "Mechanical, Electrical, Plumbing, STP & WTP — all delivered in-house.",
-    image:
-      "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    title: "Pest Control",
-    description:
-      "Scientific pest management with scheduled treatments and compliance tracking.",
-    image:
-      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    title: "Landscaping",
-    description:
-      "Garden design, maintenance and softscape care that keeps campuses vibrant.",
-    image:
-      "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    title: "Parking & Help Desk",
-    description:
-      "Parking operations, help desk and office support — one seamless front line.",
-    image:
-      "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80",
-  },
-];
-
 export const WHY_US = [
   "Managing more than 20 million Sq.ft across different portfolios",
   "All services are in-house — zero dependency on third-party vendors",
@@ -139,15 +73,6 @@ export const WHY_US = [
   "Liaison with government agencies for smooth compliance",
   "EHS, Security, Technical, Fire & Safety and process audits",
   "AMC tracking and negotiations for cost efficiency",
-];
-
-export const WELFARE = [
-  { title: "Diwali Sweets", detail: "Festive gifts for every team member" },
-  { title: "Festival Rewards", detail: "Gifts & rewards on RD / ID" },
-  { title: "₹2 Lakh Insurance", detail: "Coverage for staff welfare" },
-  { title: "Funeral Support", detail: "₹10,000 funeral expense assistance" },
-  { title: "Compensation", detail: "Up to ₹1 lakh compensation support" },
-  { title: "Merit Rewards", detail: "₹1L / ₹50K / ₹25K for top performers" },
 ];
 
 export const PRESENCE = [

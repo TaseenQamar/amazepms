@@ -3,7 +3,7 @@
 import { useState, useCallback, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, Expand } from "lucide-react";
 import { GALLERY_IMAGES } from "@/lib/content";
 import { easeExpo, scrollViewport } from "@/lib/animations";
 
@@ -61,50 +61,56 @@ export default function GalleryGrid() {
           </h2>
         </motion.div>
 
-        {/* VIP: staggered clip-reveal mosaic */}
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Uniform tiles — same width & height, object-cover fill */}
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {GALLERY_IMAGES.map((item, i) => (
             <motion.button
               key={item.src}
               type="button"
               onClick={() => setActive(i)}
-              initial={{ opacity: 0, y: 40, scale: 0.92 }}
+              initial={{ opacity: 0, y: 48, scale: 0.94 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={scrollViewport}
               transition={{
-                duration: 0.65,
-                delay: (i % 4) * 0.1,
+                duration: 0.55,
+                delay: (i % 3) * 0.08,
                 ease: easeExpo,
               }}
               whileHover={{
-                y: -8,
-                scale: 1.02,
+                y: -10,
                 transition: { type: "spring", stiffness: 380, damping: 18 },
               }}
-              className={`group relative overflow-hidden rounded-sm border-2 border-[#e89172]/80 bg-white shadow-[0_16px_40px_-20px_rgba(26,26,92,0.35)] will-change-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan hover:shadow-[0_24px_48px_-16px_rgba(26,26,92,0.45),0_0_0_1px_rgba(232,145,114,0.4)] ${
-                i === 0 || i === 3 || i === 6
-                  ? "sm:col-span-1 lg:row-span-1"
-                  : ""
-              } ${i === 6 ? "sm:col-span-2 lg:col-span-2" : ""}`}
+              className="group relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-[#e89172]/50 bg-[#ececef] shadow-[0_16px_40px_-20px_rgba(26,26,92,0.28)] will-change-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan hover:border-[#e89172] hover:shadow-[0_28px_52px_-18px_rgba(26,26,92,0.4),0_0_0_1px_rgba(232,145,114,0.45)]"
             >
-              <div
-                className={`relative w-full overflow-hidden ${
-                  i === 6 ? "aspect-[16/9]" : "aspect-[4/3]"
-                }`}
-              >
-                <Image
-                  src={item.src}
-                  alt={item.alt}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
+              <Image
+                src={item.src}
+                alt={item.alt}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
+              />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                <span className="absolute inset-x-0 bottom-0 translate-y-3 p-3 text-left text-sm font-semibold text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+              {/* VIP hover veil + caption */}
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#12124a]/85 via-[#12124a]/15 to-transparent opacity-0 transition-opacity duration-400 group-hover:opacity-100" />
+
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4">
+                <span className="translate-y-3 text-left text-sm font-bold text-white opacity-0 transition-all duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:opacity-100">
                   {item.caption}
                 </span>
+                <span className="flex h-9 w-9 shrink-0 translate-y-3 items-center justify-center rounded-full bg-white/15 text-white opacity-0 backdrop-blur-md transition-all duration-400 group-hover:translate-y-0 group-hover:opacity-100">
+                  <Expand className="h-4 w-4" />
+                </span>
               </div>
+
+              {/* Peach corner accent on hover */}
+              <span
+                aria-hidden
+                className="pointer-events-none absolute left-0 top-0 h-0 w-0 border-l-[3px] border-t-[3px] border-[#e89172] opacity-0 transition-all duration-400 group-hover:h-8 group-hover:w-8 group-hover:opacity-100"
+              />
+              <span
+                aria-hidden
+                className="pointer-events-none absolute bottom-0 right-0 h-0 w-0 border-b-[3px] border-r-[3px] border-[#e89172] opacity-0 transition-all duration-400 group-hover:h-8 group-hover:w-8 group-hover:opacity-100"
+              />
             </motion.button>
           ))}
         </div>
@@ -158,15 +164,15 @@ export default function GalleryGrid() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.4, ease: easeExpo }}
-              className="relative max-h-[80vh] w-full max-w-4xl overflow-hidden rounded-lg border-2 border-[#e89172]/60 shadow-2xl"
+              className="relative w-full max-w-4xl overflow-hidden rounded-2xl border-2 border-[#e89172]/60 bg-[#0c0c2a] shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative aspect-[16/10] w-full bg-navy">
+              <div className="relative aspect-[16/10] w-full max-h-[70vh]">
                 <Image
                   src={GALLERY_IMAGES[active].src}
                   alt={GALLERY_IMAGES[active].alt}
                   fill
-                  className="object-contain"
+                  className="object-contain object-center"
                   sizes="90vw"
                   priority
                 />
