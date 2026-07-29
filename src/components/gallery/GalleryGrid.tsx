@@ -61,8 +61,8 @@ export default function GalleryGrid() {
           </h2>
         </motion.div>
 
-        {/* Uniform tiles — same width & height, object-cover fill */}
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Uniform tiles — 320px × 35vh */}
+        <div className="flex flex-wrap justify-start gap-5">
           {GALLERY_IMAGES.map((item, i) => (
             <motion.button
               key={item.src}
@@ -80,13 +80,13 @@ export default function GalleryGrid() {
                 y: -10,
                 transition: { type: "spring", stiffness: 380, damping: 18 },
               }}
-              className="group relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-[#e89172]/50 bg-[#ececef] shadow-[0_16px_40px_-20px_rgba(26,26,92,0.28)] will-change-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan hover:border-[#e89172] hover:shadow-[0_28px_52px_-18px_rgba(26,26,92,0.4),0_0_0_1px_rgba(232,145,114,0.45)]"
+              className="group relative h-[35vh] w-[320px] overflow-hidden rounded-2xl border border-[#e89172]/50 bg-[#ececef] shadow-[0_16px_40px_-20px_rgba(26,26,92,0.28)] will-change-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan hover:border-[#e89172] hover:shadow-[0_28px_52px_-18px_rgba(26,26,92,0.4),0_0_0_1px_rgba(232,145,114,0.45)]"
             >
               <Image
                 src={item.src}
                 alt={item.alt}
                 fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                sizes="320px"
                 className="object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
               />
 

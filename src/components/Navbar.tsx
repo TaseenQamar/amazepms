@@ -11,7 +11,6 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import {
-  ArrowUpRight,
   Briefcase,
   ChevronDown,
   Home,
@@ -179,7 +178,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     className={cn(
-                      "group inline-flex items-center gap-1.5 rounded-full px-2.5 py-2 text-[12px] font-semibold tracking-wide transition-all duration-300 xl:gap-2 xl:px-3 xl:text-[13px]",
+                      "group inline-flex cursor-pointer items-center gap-1.5 rounded-full px-2.5 py-2 text-[12px] font-semibold tracking-wide transition-all duration-300 xl:gap-2 xl:px-3 xl:text-[13px]",
                       active
                         ? "bg-[#1a1a5c]/[0.08] text-[#1a1a5c]"
                         : "text-ink-soft/80 hover:bg-[#1a1a5c]/[0.05] hover:text-[#1a1a5c]"
@@ -214,7 +213,7 @@ export default function Navbar() {
                 aria-expanded={moreOpen}
                 aria-haspopup="menu"
                 className={cn(
-                  "group inline-flex items-center gap-1.5 rounded-full px-2.5 py-2 text-[12px] font-semibold tracking-wide transition-all duration-300 xl:gap-2 xl:px-3 xl:text-[13px]",
+                  "group inline-flex cursor-pointer items-center gap-1.5 rounded-full px-2.5 py-2 text-[12px] font-semibold tracking-wide transition-all duration-300 xl:gap-2 xl:px-3 xl:text-[13px]",
                   moreOpen || moreActive
                     ? "bg-[#1a1a5c]/[0.08] text-[#1a1a5c]"
                     : "text-ink-soft/80 hover:bg-[#1a1a5c]/[0.05] hover:text-[#1a1a5c]"
@@ -252,7 +251,7 @@ export default function Navbar() {
                           role="menuitem"
                           onClick={() => setMoreOpen(false)}
                           className={cn(
-                            "flex items-center gap-3 px-4 py-2.5 text-[13px] font-semibold transition-colors duration-200",
+                            "flex cursor-pointer items-center gap-3 px-4 py-2.5 text-[13px] font-semibold transition-colors duration-200",
                             active
                               ? "bg-[#1a1a5c]/[0.06] text-[#1a1a5c]"
                               : "text-ink-soft hover:bg-[#1a1a5c]/[0.04] hover:text-[#1a1a5c]"
@@ -275,7 +274,7 @@ export default function Navbar() {
             </motion.li>
           </ul>
 
-          {/* CTA — xl+ */}
+          {/* Phone — xl+ */}
           <motion.div
             initial={{ opacity: 0, x: 16 }}
             animate={{ opacity: 1, x: 0 }}
@@ -284,18 +283,11 @@ export default function Navbar() {
           >
             <a
               href="tel:9908538137"
-              className="group inline-flex items-center gap-1.5 whitespace-nowrap text-[13px] font-semibold text-ink-soft transition-colors hover:text-[#1a1a5c]"
+              className="group inline-flex cursor-pointer items-center gap-1.5 whitespace-nowrap text-[13px] font-semibold text-ink-soft transition-colors hover:text-[#1a1a5c]"
             >
               <Phone className="h-3.5 w-3.5 shrink-0 text-cyan transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12 group-hover:text-[#e89172]" />
               99085 38137
             </a>
-            <button
-              type="button"
-              className="group inline-flex cursor-default items-center gap-1.5 whitespace-nowrap rounded-full bg-gradient-to-r from-white to-[#f8ebe5] px-4 py-2 text-[13px] font-bold text-[#1a1a5c] shadow-[0_8px_24px_-8px_rgba(232,145,114,0.35)] transition-all duration-300 hover:scale-[1.05] hover:shadow-[0_12px_28px_-8px_rgba(26,26,92,0.3)]"
-            >
-              Get a Quote
-              <ArrowUpRight className="h-3.5 w-3.5 text-[#e89172] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </button>
           </motion.div>
 
           {/* Mobile toggle */}
@@ -304,7 +296,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
             onClick={() => setOpen((v) => !v)}
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-ink shadow-sm lg:hidden"
+            className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full bg-white text-ink shadow-sm lg:hidden"
             aria-label="Toggle menu"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -337,7 +329,7 @@ export default function Navbar() {
                       href={link.href}
                       onClick={() => setOpen(false)}
                       className={cn(
-                        "flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-semibold transition-all duration-300 hover:translate-x-1 hover:bg-[#1a1a5c]/[0.06]",
+                        "flex cursor-pointer items-center gap-3 rounded-xl px-3 py-3 text-sm font-semibold transition-all duration-300 hover:translate-x-1 hover:bg-[#1a1a5c]/[0.06]",
                         active ? "bg-[#1a1a5c]/[0.06] text-[#1a1a5c]" : "text-ink-soft"
                       )}
                     >
@@ -354,17 +346,11 @@ export default function Navbar() {
               })}
               <a
                 href="tel:9908538137"
-                className="mt-2 flex items-center gap-2 rounded-xl px-3 py-3 text-sm font-semibold text-ink"
+                className="mt-2 flex cursor-pointer items-center gap-2 rounded-xl px-3 py-3 text-sm font-semibold text-ink"
               >
                 <Phone className="h-4 w-4 text-cyan" />
                 99085 38137
               </a>
-              <button
-                type="button"
-                className="mt-1 cursor-default rounded-full bg-cyan px-4 py-3 text-center text-sm font-bold text-white"
-              >
-                Get a Quote
-              </button>
             </div>
           </motion.div>
         )}
