@@ -14,7 +14,6 @@ import {
   ArrowUpRight,
   Briefcase,
   ChevronDown,
-  CreditCard,
   Home,
   Images,
   Layers,
@@ -49,7 +48,6 @@ const MORE_LINKS: NavItem[] = [
   { label: "Recruitments", href: "/recruitments", icon: UserPlus },
   { label: "Our Strength", href: "/strength", icon: Shield },
   { label: "Careers", href: "/careers", icon: Briefcase },
-  { label: "Payment", href: "/payment", icon: CreditCard },
   { label: "Contact Us", href: "/contact", icon: Phone },
 ];
 

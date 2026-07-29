@@ -32,7 +32,6 @@ export default function SmoothScrollProvider({
         return Boolean(
           node.closest("[data-lenis-prevent]") ||
             node.closest("iframe") ||
-            node.closest("[class*='Stripe']") ||
             node.closest("input, textarea, select, [contenteditable='true']")
         );
       },

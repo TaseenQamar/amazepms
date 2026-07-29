@@ -23,7 +23,6 @@ const QUICK_LINKS = [
   { label: "Our Clients", href: "/clients" },
   { label: "Recruitments", href: "/recruitments" },
   { label: "Careers", href: "/careers" },
-  { label: "Payment", href: "/payment" },
   { label: "Contact Us", href: "/contact" },
 ];
 

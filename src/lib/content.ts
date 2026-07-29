@@ -7,7 +7,6 @@ export const NAV_LINKS = [
   { label: "Our Clients", href: "/clients" },
   { label: "Gallery", href: "/gallery" },
   { label: "Careers", href: "/careers" },
-  { label: "Payment", href: "/payment" },
   { label: "Contact Us", href: "/contact" },
 ];
 
